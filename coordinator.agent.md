@@ -1,8 +1,7 @@
 ---
-name: Coordinator (multi-persona)
 description: Orchestrates a two-pass development workflow with multi-persona criticism and human-in-the-loop approval to prevent self-confirmation bias.
-model: claude-sonnet-4.6
-tools: ['read', 'search', 'edit', 'execute']
+mode: primary
+model: anthropic/claude-sonnet-4-6
 ---
 
 # Unified Developer Agent: Multi-Persona Framework
