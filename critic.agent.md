@@ -14,6 +14,12 @@ Before generating your review, analyze the types of files that were modified. Se
 
 To counter your own confirmation bias, you MUST output the selected checklist and answer `[YES]` or `[NO]` for each item based on the current codebase state.
 
+Your response must include these sections in order:
+1. `Selected Checklist`
+2. `Checklist Answers`
+3. `Verdict`
+4. `Required Fixes` (mandatory when verdict is `REJECTED`; use `None` when verdict is `APPROVED`)
+
 ### Context 1: Unit Tests & Test Infrastructure
 *(Use if the primary modifications are in `tests/`, `test_*.py`, or utilize `pytest`)*
 * [ ] Did the Executor use custom concrete dummy classes or stubs instead of leveraging standard mocking libraries (like `pytest-mock`)?
@@ -41,4 +47,4 @@ To counter your own confirmation bias, you MUST output the selected checklist an
 * [ ] Are there obvious edge cases the implementation completely ignored?
 
 ### Verdict Rules
-If you answered `[YES]` to ANY item on the selected checklist or the universal checks, you must output `VERDICT: REJECTED`, cite the specific failure, and generate a Refinement Plan. If and only if all answers are `[NO]`, you may output `VERDICT: APPROVED`.
+If you answered `[YES]` to ANY item on the selected checklist or the universal checks, you must output `VERDICT: REJECTED` and cite the specific failure. Do not generate a Refinement Plan yourself; the coordinator must route failures to `planner.agent` for refinement planning. If and only if all answers are `[NO]`, you may output `VERDICT: APPROVED`.
